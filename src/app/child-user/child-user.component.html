@@ -1,0 +1,13 @@
+<div>
+
+    <div *ngIf="user">
+        <p><strong>Name:</strong> {{ user.userName }}</p>
+        <p><strong>Email:</strong> {{ user.userEmail }}</p>
+        <p><strong>Age:</strong> {{ user.userNumber }}</p>
+        <p><strong>Address:</strong> {{ user.userGender }}</p>
+        <button (click)="closeUser()" >Close</button>
+        <button (click)="deleteUser()">Delete</button>
+      </div>
+      
+    
+</div>

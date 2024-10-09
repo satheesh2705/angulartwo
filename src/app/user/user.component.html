@@ -1,0 +1,44 @@
+<!-- <div *ngIf="userDetails && userDetails.length; else loading">
+    <h2>User Details</h2>
+    <div *ngFor="let userDetail of userDetails" class="user-info">
+      <p><strong>Name:</strong> {{ userDetail.userName }}</p>
+      <p><strong>Email:</strong> {{ userDetail.userEmail }}</p>
+      <p><strong>Gender:</strong> {{ userDetail.userGender }}</p>
+      <p><strong>Phone:</strong> {{ userDetail.userNumber }}</p>
+      <ul *ngFor="let userHobies of userDetail.hobbies" >
+        <li><strong>Hobbies :</strong> {{userHobies?.hobby}}</li>
+      </ul>
+      <hr>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading user details...</p>
+  </ng-template>
+   -->
+<!-- <div>
+    <ng-container *ngIf="userDetails && userDetails.length; else loading">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>E-mail</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userDetail of userDetails">
+            <td>{{ userDetail.userName }}</td>
+            <td>{{ userDetail.number }}</td>
+            <td>{{ userDetail.email }}</td>
+            <td>{{ userDetail.gender }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #loading>
+      <h2>No User......</h2>
+    </ng-template>
+  </div> -->
+

@@ -1,0 +1,38 @@
+<div>
+  <h4> Welcome To {{title}} APP</h4>
+
+
+  <div CustomStyle>
+    <p> This is Attributes Directive </p>
+  </div>
+
+  <button (click)="change()">Change</button>
+
+ <ng-template [show]='display'>
+  <nav class="nav">
+    <a routerLink="/login">Login</a>
+    <a routerLink="/list">List</a>
+    <a routerLink="/profile">Profile</a>
+  </nav>
+ </ng-template>
+
+ <div [ngSwitch]="value">
+  
+    <p *ngSwitchCase="10"> this is 10</p>
+    <p *ngSwitchCase="15"> this is 15</p>
+    <p *ngSwitchCase="20"> this is third</p>
+    <p *ngSwitchDefault> Default case choose valid...</p>
+
+
+ </div>
+  
+
+
+
+
+  <router-outlet>
+  </router-outlet>
+  
+</div>
+
+

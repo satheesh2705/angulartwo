@@ -1,0 +1,37 @@
+<div>
+    <table mat-table [dataSource]="data" class="mat-elevation-z8">
+
+        <!-- <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container> -->
+
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element">
+                <ng-container *ngIf="column === 'action'; else regularCell">
+                    <button (click)="viewUser(element.id)">View Button</button>
+                    <button>Update Button</button>
+                    <button (click)="onDeleteUser(element.id)">Delete Button</button>
+
+                </ng-container>
+                <ng-template #regularCell>
+                    {{element[column]}}
+                </ng-template>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+
+    </table>
+
+    <app-child-user 
+    [user]="selectedUser" 
+    (userDelete)="onDeleteUser($event)"
+    (userClose)="userViewClose($event)"
+    >
+</app-child-user>
+
+
+</div>

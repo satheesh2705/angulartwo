@@ -1,0 +1,65 @@
+<div class="LoginComponent">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #formDirective="ngForm">
+    <mat-form-field class="formField" appearence="fill">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Enter Your Name" formControlName="userName" />
+      <mat-error *ngIf=" loginForm.get('userName')?.invalid && loginForm.get('userName')?.touched">
+        <span *ngIf="loginForm.get('userName')?.errors">Name is required.</span>
+        <span *ngIf="loginForm.get('userName')?.errors">Name must be at least 3 characters long.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="formField">
+      <mat-label>Number</mat-label>
+      <input matInput placeholder="Enter Your Number" formControlName="userNumber" />
+      <mat-error *ngIf="loginForm.get('userNumber')?.invalid && loginForm.get('userNumber')?.touched">
+        <span *ngIf="loginForm.get('userNumber')?.hasError('required')">Number is required.</span>
+        <span *ngIf="loginForm.get('userNumber')?.errors">Number must be at least 5 characters long.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="formField">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Enter Your Email" formControlName="userEmail" />
+      <mat-error *ngIf="loginForm.get('userEmail')?.invalid && loginForm.get('userEmail')?.touched ">
+        <span *ngIf="loginForm.get('userEmail')?.hasError('required')">Email is required.</span>
+        <span *ngIf="loginForm.get('userEmail')?.hasError('minLength')">Email must be at least 10 characters long.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="Gender">
+      <!-- <h6>Gender</h6> -->
+      <mat-radio-group formControlName="userGender">
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf=" loginForm.get('userGender')?.invalid && loginForm.get('userGender')?.touched ">
+        <span *ngIf="loginForm.get('userGender')">Gender is required.</span>
+      </mat-error>
+    </div>
+
+    <div class="Hobbies" (click)="addHobbies()">
+      <label for="addInput">Add Your Hobbies
+        <h6>+</h6>
+      </label>
+    </div>
+    <div formArrayName="hobbies">
+      <div *ngFor="let hobby of hobbies.controls; let i = index" [formGroupName]="i" class="AddInput">
+        <mat-form-field>
+          <input formControlName="hobby" matInput placeholder="Enter hobby" />
+        </mat-form-field>
+        <div (click)="removeHobby(i)">x</div>
+        <div *ngIf="loginForm.get('hobbies')?.invalid && loginForm.get('hobbies')?.touched">
+          <small *ngIf="loginForm.get('hobbies')?.hasError('required')">At least one hobby is required.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="submitBtn">
+      <button mat-flat-button type="submit" [disabled]="loginForm.invalid">Submit</button>
+    </div>
+  </form>
+
+  <button type="button" (click)="viewUserDetail()">Show User Detail</button>
+
+</div>
